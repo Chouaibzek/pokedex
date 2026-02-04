@@ -6,26 +6,18 @@
   "build": {
     "production": {
       "ios": {
-        "workflow": "managed",
-        "releaseChannel": "production",
-        "buildType": "release"
+        "releaseChannel": "production"
       },
       "android": {
-        "workflow": "managed",
-        "releaseChannel": "production",
-        "buildType": "app-bundle"
+        "releaseChannel": "production"
       }
     },
     "staging": {
       "ios": {
-        "workflow": "managed",
-        "releaseChannel": "staging",
-        "buildType": "release"
+        "releaseChannel": "staging"
       },
       "android": {
-        "workflow": "managed",
-        "releaseChannel": "staging",
-        "buildType": "apk"
+        "releaseChannel": "staging"
       }
     }
   },
@@ -34,25 +26,19 @@
       "ios": {
         "appleId": "ton.email@exemple.com",
         "ascAppId": "1234567890",
-        "teamId": "XXXXXXXXXX",
-        "bundleIdentifier": "com.tonapp.ios"
+        "bundleIdentifier": "com.pokedex.ios"
       },
       "android": {
         "serviceAccountKeyPath": "./android-service-account.json",
-        "track": "internal",
-        "package": "com.tonapp.android"
+        "track": "internal"
       }
     },
     "staging": {
       "extends": "production",
       "ios": {
-        "releaseChannel": "staging",
-        "bundleIdentifier": "com.tonapp.staging.ios"
+        "bundleIdentifier": "com.pokedex.staging.ios"
       },
-      "android": {
-        "track": "internal",
-        "package": "com.tonapp.staging.android"
-      }
+      "android": {}
     }
   }
 }
