@@ -1,9 +1,15 @@
 {
-    "build": {
-        "preview": {
-            "ios": {
-                "distribution": "internal"
-            }
-        }
+  "cli": {
+    "version": ">= 0.34.0"
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "track": "internal"
+      },
+      "ios": {
+        "ascAppId": "your-app-store-connect-app-id"
+      }
     }
+  }
 }
