@@ -28,7 +28,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/Pokemon_Home_Logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.opencompass.pokedex"
     },
     "web": {
       "bundler": "metro",
