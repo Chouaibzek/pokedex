@@ -1,14 +1,57 @@
 {
   "cli": {
-    "version": ">= 0.34.0"
+    "version": ">= 3.0.0",
+    "requireCommit": true
+  },
+  "build": {
+    "production": {
+      "ios": {
+        "workflow": "managed",
+        "releaseChannel": "production",
+        "buildType": "release"
+      },
+      "android": {
+        "workflow": "managed",
+        "releaseChannel": "production",
+        "buildType": "app-bundle"
+      }
+    },
+    "staging": {
+      "ios": {
+        "workflow": "managed",
+        "releaseChannel": "staging",
+        "buildType": "release"
+      },
+      "android": {
+        "workflow": "managed",
+        "releaseChannel": "staging",
+        "buildType": "apk"
+      }
+    }
   },
   "submit": {
     "production": {
-      "android": {
-        "track": "internal"
-      },
       "ios": {
-        "ascAppId": "your-app-store-connect-app-id"
+        "appleId": "ton.email@exemple.com",
+        "ascAppId": "1234567890",
+        "teamId": "XXXXXXXXXX",
+        "bundleIdentifier": "com.tonapp.ios"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./android-service-account.json",
+        "track": "internal",
+        "package": "com.tonapp.android"
+      }
+    },
+    "staging": {
+      "extends": "production",
+      "ios": {
+        "releaseChannel": "staging",
+        "bundleIdentifier": "com.tonapp.staging.ios"
+      },
+      "android": {
+        "track": "internal",
+        "package": "com.tonapp.staging.android"
       }
     }
   }
