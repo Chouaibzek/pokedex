@@ -6,10 +6,16 @@ on:
 
 jobs:
   build_android:
-    type: build # This job type creates a production build for Android
+    type: build
     params:
       platform: android
+
   build_ios:
-    type: build # This job type creates a production build for iOS
+    type: build
     params:
       platform: ios
+
+  deploy_web:
+    type: deploy
+    params:
+      platform: web

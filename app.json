@@ -4,7 +4,7 @@
     "slug": "pokedex",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/Pokémon_Home_Logo",
+    "icon": "./assets/images/Pokémon_Home_Logo.png",
     "scheme": "Pokemon",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -22,14 +22,14 @@
     "android": {
       "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/Pokémon_Home_Logo",
+        "foregroundImage": "./assets/images/Pokémon_Home_Logo.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/Pokémon_Home_Logo"
+      "favicon": "./assets/images/Pokémon_Home_Logo.png"
     },
     "plugins": [
       "expo-router"
