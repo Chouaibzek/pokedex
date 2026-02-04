@@ -1,14 +1,18 @@
-import { View, ScrollView, ActivityIndicator } from 'react-native';
+import { View} from 'react-native';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocalSearchParams, Stack } from 'expo-router';
-import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { Text } from '@/components/ui/text'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
+import { observable } from '@legendapp/state';
+import { useValue } from '@legendapp/state/react';
 
-interface PokemonDetail {
+
+const pokemonP = observable<PokemonDetail | null> (null);
+const loadingP = observable(true);
+
+type  PokemonDetail = {
   id: number;
   name: string;
   height: number;
@@ -17,20 +21,8 @@ interface PokemonDetail {
 
 export default function PokemonDetailsScreen() {
   const { name } = useLocalSearchParams<{ name: string }>();
-  const [pokemon, setPokemon] = useState<PokemonDetail | null>(null);
-  const [loading, setLoading] = useState(true);
-  const translateX = useSharedValue(0);
-  const translateY = useSharedValue(0);
-  const drag = Gesture.Pan().onChange(event => {
-    translateX.value += event.changeX;
-    translateY.value += event.changeY;
-  });
-  const containerStyle = useAnimatedStyle(() => ({
-    transform: [
-      { translateX: translateX.value },
-      { translateY: translateY.value },
-    ],
-  }));
+  const pokemon = useValue(pokemonP);
+  const loading = useValue(loadingP)
 
 
   useEffect(() => {
@@ -46,17 +38,14 @@ export default function PokemonDetailsScreen() {
         };
 
 
-        setPokemon(pokemonData);
+        pokemonP.set(pokemonData);
       } catch (error) {
         console.log('Erreur Axios:', error);
       } finally {
-        setLoading(false);
+        loadingP.set(false);
       }
     };
-
-    if (name) {
-      fetchPokemon();
-    }
+    fetchPokemon();
   }, [name]);
 
   if (loading) {
@@ -77,7 +66,7 @@ export default function PokemonDetailsScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ title: pokemon.name.toUpperCase() }} />
+      <Stack.Screen options={{ title: name.toUpperCase() }} />
       <View className="flex-1 justify-center items-center">
         <Badge variant="destructive">
           <Text>#{pokemon.id}</Text>

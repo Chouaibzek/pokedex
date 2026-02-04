@@ -10,10 +10,8 @@
     "clean": "rm -rf .expo node_modules"
   },
   "dependencies": {
-    "@heroui/calendar": "^2.2.30",
-    "@heroui/progress": "^2.2.24",
-    "@heroui/system": "^2.4.26",
-    "@heroui/theme": "^2.4.26",
+    "@legendapp/state": "^3.0.0-beta.43",
+    "@react-native-async-storage/async-storage": "^2.2.0",
     "@react-navigation/native": "^7.0.0",
     "@rn-primitives/accordion": "^1.2.0",
     "@rn-primitives/alert-dialog": "^1.2.0",
@@ -39,6 +37,8 @@
     "@rn-primitives/toggle": "^1.2.0",
     "@rn-primitives/toggle-group": "^1.2.0",
     "@rn-primitives/tooltip": "^1.2.0",
+    "@tanstack/react-query": "^5.90.20",
+    "@tanstack/react-query-persist-client": "^5.90.22",
     "axios": "^1.13.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
