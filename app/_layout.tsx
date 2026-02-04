@@ -6,6 +6,7 @@ import { PortalHost } from '@rn-primitives/portal';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useUniwind } from 'uniwind';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -16,10 +17,12 @@ export default function RootLayout() {
   const { theme } = useUniwind();
 
   return (
-    <ThemeProvider value={NAV_THEME[theme ?? 'light']}>
-      <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
-      <Stack />
-      <PortalHost />
-    </ThemeProvider>
+      <ThemeProvider value={NAV_THEME[theme ?? 'light']}>
+        <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
+        <PortalHost />
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
+      </ThemeProvider>
   );
 }

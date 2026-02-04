@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "minimal",
-    "slug": "minimal",
+    "name": "Pokemon",
+    "slug": "pokedex",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "minimal",
+    "icon": "./assets/images/Pokémon_Home_Logo",
+    "scheme": "Pokemon",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/Pokémon_Home_Logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,20 +22,27 @@
     "android": {
       "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/Pokémon_Home_Logo",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/Pokémon_Home_Logo"
     },
     "plugins": [
       "expo-router"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "7587f1d0-9c15-4b0c-966c-2941c11fda42"
+      }
+    },
+    "owner": "opencompass"
   }
 }
