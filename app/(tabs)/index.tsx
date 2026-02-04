@@ -6,8 +6,8 @@ import { Image, type ImageStyle, View } from 'react-native';
 import { Uniwind, useUniwind } from 'uniwind';
 
 const LOGO = {
-  light: require('@/assets/images/Pokémon_Home_Logo.png'),
-  dark: require('@/assets/images/Pokémon_Home_Logo.png'),
+  light: require('@/assets/images/Pokemon_Home_Logo.png'),
+  dark: require('@/assets/images/Pokemon_Home_Logo.png'),
 };
 
 const SCREEN_OPTIONS = {

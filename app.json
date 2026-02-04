@@ -4,12 +4,12 @@
     "slug": "pokedex",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/Pokémon_Home_Logo.png",
+    "icon": "./assets/images/Pokemon_Home_Logo.png",
     "scheme": "Pokemon",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/Pokémon_Home_Logo.png",
+      "image": "./assets/images/Pokemon_Home_Logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,19 +17,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.opencompass.pokedex",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/Pokémon_Home_Logo.png",
+        "foregroundImage": "./assets/images/Pokemon_Home_Logo.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/Pokémon_Home_Logo.png"
+      "favicon": "./assets/images/Pokemon_Home_Logo.png"
     },
     "plugins": [
       "expo-router"
