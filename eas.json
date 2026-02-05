@@ -1,44 +1,10 @@
 {
-  "cli": {
-    "version": ">= 3.0.0",
-    "requireCommit": true
-  },
   "build": {
-    "production": {
-      "ios": {
-        "releaseChannel": "production"
-      },
+    "preview": {
+      "distribution": "internal",
       "android": {
-        "releaseChannel": "production"
+        "buildType": "apk"
       }
-    },
-    "staging": {
-      "ios": {
-        "releaseChannel": "staging"
-      },
-      "android": {
-        "releaseChannel": "staging"
-      }
-    }
-  },
-  "submit": {
-    "production": {
-      "ios": {
-        "appleId": "ton.email@exemple.com",
-        "ascAppId": "1234567890",
-        "bundleIdentifier": "com.pokedex.ios"
-      },
-      "android": {
-        "serviceAccountKeyPath": "./android-service-account.json",
-        "track": "internal"
-      }
-    },
-    "staging": {
-      "extends": "production",
-      "ios": {
-        "bundleIdentifier": "com.pokedex.staging.ios"
-      },
-      "android": {}
     }
   }
 }

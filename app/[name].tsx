@@ -1,5 +1,5 @@
 import { View} from 'react-native';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import { useLocalSearchParams, Stack } from 'expo-router';
 import { Text } from '@/components/ui/text'

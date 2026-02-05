@@ -48,6 +48,12 @@
         "projectId": "7587f1d0-9c15-4b0c-966c-2941c11fda42"
       }
     },
-    "owner": "opencompass"
+    "owner": "opencompass",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/7587f1d0-9c15-4b0c-966c-2941c11fda42"
+    }
   }
 }
