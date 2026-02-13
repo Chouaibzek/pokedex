@@ -20,7 +20,10 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.opencompass.pokedex",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "L'application a besoin d'accéder à votre caméra pour prendre des photos de Pokémon.",
+        "NSPhotoLibraryUsageDescription": "L'application a besoin d'accéder à vos photos pour sélectionner et sauvegarder des images de Pokémon.",
+        "NSPhotoLibraryAddUsageDescription": "L'application a besoin d'accéder à vos photos pour sauvegarder des images de Pokémon."
       }
     },
     "android": {
@@ -29,7 +32,13 @@
         "foregroundImage": "./assets/images/Pokemon_Home_Logo.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.opencompass.pokedex"
+      "package": "com.opencompass.pokedex",
+      "permissions": [
+        "CAMERA",
+        "READ_MEDIA_IMAGES",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -37,7 +46,19 @@
       "favicon": "./assets/images/Pokemon_Home_Logo.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "L'application a besoin d'accéder à votre caméra pour prendre des photos de Pokémon."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "L'application a besoin d'accéder à vos photos pour sélectionner des images de Pokémon."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

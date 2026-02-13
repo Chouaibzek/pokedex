@@ -1,40 +1,24 @@
 import { View, ScrollView } from 'react-native';
-import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { router, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
 import { Text } from '@/components/ui/text';
 import { Star } from 'lucide-react-native';
 import { Switch } from '@/components/ui/switch';
-import { useValue } from '@legendapp/state/react';
-
-import {
-  allPokemon,
-  favorite,
-  showFavoritesOnly,
-  fetchAllPokemon,
-  restoreState,
-  enablePersistence,
-  toggleFavorite,
-} from '@/stores/pokemon';
+import { usePokemonListService } from '@/services/pokemonListService';
 
 const SCREEN_OPTIONS = {
   title: 'Pokemon list',
 };
 
 export default function PokemonListScreen() {
-  const list = useValue(allPokemon);
-  const fav = useValue(favorite);
-  const showFav = useValue(showFavoritesOnly);
-
-  useEffect(() => {
-    fetchAllPokemon();
-    restoreState();
-    enablePersistence();
-  }, []);
-
-  const displayedList = showFav
-    ? list.filter(pokemon => fav[pokemon.name])
-    : list;
+  const {
+    displayedList,
+    favorites,
+    showFavoritesOnly,
+    handleToggleFavorite,
+    handleNavigateToDetails,
+    handleToggleShowFavorites,
+  } = usePokemonListService();
 
   return (
     <>
@@ -42,12 +26,12 @@ export default function PokemonListScreen() {
 
       <View className="flex-1 bg-background p-4">
         <Switch
-          checked={showFav}
-          onCheckedChange={(checked) => showFavoritesOnly.set(checked)}
+          checked={showFavoritesOnly}
+          onCheckedChange={handleToggleShowFavorites}
           className="mb-4 self-center"
         >
           <Text>
-            {showFav ? 'Afficher tous les Pokémon' : 'Afficher les favoris'}
+            {showFavoritesOnly ? 'Afficher tous les Pokémon' : 'Afficher les favoris'}
           </Text>
         </Switch>
 
@@ -55,7 +39,7 @@ export default function PokemonListScreen() {
           {displayedList.map((pokemon) => (
             <View key={pokemon.name} className="flex-row self-center mb-2">
               <Button
-                onPress={() => router.push(`../${pokemon.name}`)}
+                onPress={() => handleNavigateToDetails(pokemon.name)}
                 className="w-40 m-1"
                 variant="pokedex"
               >
@@ -63,11 +47,11 @@ export default function PokemonListScreen() {
               </Button>
 
               <Button
-                onPress={() => toggleFavorite(pokemon.name)}
+                onPress={() => handleToggleFavorite(pokemon.name)}
                 className="w-10 bg-transparent"
               >
                 <Star
-                  color={fav[pokemon.name] ? 'yellow' : 'gray'}
+                  color={favorites[pokemon.name] ? 'yellow' : 'gray'}
                   size={18}
                 />
               </Button>

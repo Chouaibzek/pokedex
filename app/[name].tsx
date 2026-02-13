@@ -24,7 +24,6 @@ export default function PokemonDetailsScreen() {
   const pokemon = useValue(pokemonP);
   const loading = useValue(loadingP)
 
-
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
@@ -36,8 +35,7 @@ export default function PokemonDetailsScreen() {
           height: response.data.height,
           weight: response.data.weight
         };
-
-
+        
         pokemonP.set(pokemonData);
       } catch (error) {
         console.log('Erreur Axios:', error);

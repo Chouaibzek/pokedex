@@ -4,8 +4,25 @@ import axios from 'axios';
 
 export type Pokemon = {
   name: string;
+  url?: string;
   captureDate?: string;
-  location?:string;
+  location?: string;
+  uri?:string
+};
+
+export type PokemonDetail = {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  sprites: {
+    front_default: string;
+  };
+  types: Array<{
+    type: {
+      name: string;
+    };
+  }>;
 };
 
 export const allPokemon = observable<Pokemon[]>([]);
@@ -77,17 +94,18 @@ export function enablePersistence() {
 }
 
 
-export async function fetchAllPokemon() {
-  if (allPokemon.get().length > 0) return;
+export async function fetchAllPokemon(): Promise<Pokemon[]> {
+  const response = await axios.get(
+    'https://pokeapi.co/api/v2/pokemon?limit=151'
+  );
+  return response.data.results;
+}
 
-  try {
-    const response = await axios.get(
-      'https://pokeapi.co/api/v2/pokemon?limit=151'
-    );
-    allPokemon.set(response.data.results);
-  } catch (error) {
-    console.error('Erreur Axios:', error);
-  }
+export async function fetchPokemonDetails(name: string): Promise<PokemonDetail> {
+  const response = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon/${name}`
+  );
+  return response.data;
 }
 
 export function toggleFavorite(name: string) {
